@@ -33,7 +33,7 @@ function App() {
 
   return (
     <div className="App">
-      <label>Username:</label>
+      <label data-testid="bananas">Username:</label>
       <input 
         type="text" 
         name="usernameInput" 
