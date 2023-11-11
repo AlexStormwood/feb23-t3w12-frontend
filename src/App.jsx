@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import './App.css';
+import { login } from './functions/login';
 
 function App() {
 
@@ -11,25 +12,9 @@ function App() {
     console.log(`JWT value is:\n${jwt}`);
   }, [jwt]);
 
-  async function login(){ 
-    console.log(username, password);
 
-    let result = await fetch(
-      process.env.REACT_APP_BACKEND_URL + "/users/login",
-      {
-        method: "POST", // or 'PUT'
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({username: username, password: password}),
-      }
-    );
 
-    let data = await result.json();
 
-    console.log(data);
-
-  }
 
   return (
     <div className="App">
@@ -51,7 +36,7 @@ function App() {
         onChange={(event) => setPassword(event.target.value)} 
       />
       
-      <button onClick={login}>
+      <button onClick={() => {login(username, password)}}>
         Log In
       </button>
 
